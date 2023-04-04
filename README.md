@@ -1,355 +1,355 @@
-# Your second class - Git and Github
-**:warning: As you are using GitHub Education and CodeSpaces, some parts of this lesson, like setting up your user configuration, may not be necessary.** 
-## Learning Objectives
+# Tu segunda clase - Git y Github
+**:warning: Como estás usando GitHub Education y CodeSpaces, algunas partes de esta lección, como establecer tu configuración de usuario, pueden no ser necesarias.**
+## Objetivos de aprendizaje
 
-By the end of this class, you should be able to:
+Al final de esta clase, deberías ser capaz de:
 
-* Explain what Git is, and why it is a useful tool.
-* Get a copy of your homework questions onto your computer.
-  * (To _clone_ a repository).
-* Save your answers, and send them to our volunteers.
-  * (To _commit_, _fork_ a repository, and _push_ changes).
-* See and respond to feedback on your homework.
-  * (To use GitHub's _pull request_ workflows, and _push_ further changes).
-* Explore how a file has changed over time.
-  * (To use Git's _history log_).
+* Explicar qué es Git y por qué es una herramienta útil.
+* Obtener una copia de tus preguntas de tarea en tu ordenador.
+  * (Para _clonar_ un repositorio).
+* Guarda tus respuestas y envíalas a nuestros voluntarios.
+  * (Para _commit_, _fork_ un repositorio, y _push_ cambios).
+* Ver y responder a los comentarios sobre tu tarea.
+  * (Para utilizar los flujos de trabajo _pull request_ de GitHub, y _push_ más cambios).
+* Explorar cómo ha cambiado un archivo a lo largo del tiempo.
+  * (Para usar el _history log_ de Git).
 
-### Get started
+### Empezar
 
-We will use Git as our Version Control System (also known as Source Control). Simply put, a version control system takes snapshots of your files and saves them.
+Usaremos Git como nuestro Sistema de Control de Versiones (también conocido como Control de Fuentes). En pocas palabras, un sistema de control de versiones toma instantáneas de tus archivos y las guarda.
 
-> **What is "version control"?** Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later.\
-> It allows you to revert files back to a previous state, revert the entire project back to a previous state, compare changes over time, see who last modified something that might be causing a problem, who introduced an issue and when, and more. Using a VCS also generally means that if you screw things up or lose files, you can easily recover. In addition, you get all this for very little overhead.
+> **¿Qué es el "control de versiones"?** El control de versiones es un sistema que registra los cambios realizados en un archivo o conjunto de archivos a lo largo del tiempo, de forma que puedas recuperar versiones específicas más adelante.
+> Le permite revertir archivos a un estado anterior, revertir todo el proyecto a un estado anterior, comparar los cambios en el tiempo, ver quién modificó por última vez algo que podría estar causando un problema, quién introdujo un problema y cuándo, y mucho más. Utilizar un VCS también significa que, si se estropean las cosas o se pierden archivos, se pueden recuperar fácilmente. Además, todo esto sale muy barato.
 
-(Extract from [Git Pro book](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control) )
+(Extracto de [Git Pro book](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control) )
 
-So what is **Git**? Git is one of many Version Control Systems available, and by far [the most popular](http://stackoverflow.com/insights/survey/2015#tech-sourcecontrol).
+¿Qué es **Git**? Git es uno de los muchos Sistemas de Control de Versiones disponibles, y con diferencia [el más popular](http://stackoverflow.com/insights/survey/2015#tech-sourcecontrol).
 
-Do not confuse Git with **GitHub**! GitHub is a very popular website where you can publish and share your code. You upload your code as Git repositories (a type of folder or directory), so that you can share it. This makes it possible to collaborate with other people: everyone is writing code that tracked by Git and is added to the same repository.
+¡No confundas Git con **GitHub**! GitHub es un sitio web muy popular donde puedes publicar y compartir tu código. Subes tu código como repositorios Git (un tipo de carpeta o directorio), para poder compartirlo. Esto hace posible colaborar con otras personas: todo el mundo escribe código que es rastreado por Git y se añade al mismo repositorio.
 
-![](<.content/image (187).png>)
+![](<.contenido/imagen (187).png>)
 
-During our course, we will be using [GitHub](https://github.com/) to store our code. GitHub is the most popular Git service around, and is used by many large companies, like Facebook, Airbnb and The Guardian.
+Durante nuestro curso, utilizaremos [GitHub](https://github.com/) para almacenar nuestro código. GitHub es el servicio Git más popular que existe, y es utilizado por muchas grandes empresas, como Facebook, Airbnb y The Guardian.
 
-Most software engineers use a tool called Git to organise their code, and collaborate with other people.
+La mayoría de los ingenieros de software utilizan una herramienta llamada Git para organizar su código y colaborar con otras personas.
 
-Git is a version control tool that is used to keep the history of changes. I - this sets up the remote URL (GitHub)t makes collaboration easier. We'll see many of its uses throughout the course.
+Git es una herramienta de control de versiones que se utiliza para mantener el historial de cambios. I - this sets up the remote URL (GitHub)t makes collaboration easier. Veremos muchos de sus usos a lo largo del curso.
 
-Each week, you're going to use Git to get a copy of your homework exercises, to submit your solutions, and to get feedback on your solutions. Today, you're going to learn how to do these things.
+Cada semana, vas a utilizar Git para obtener una copia de tus ejercicios de tarea, para enviar tus soluciones, y para obtener retroalimentación sobre tus soluciones. Hoy, vas a aprender cómo hacer estas cosas.
 
-[MigraCode's GitHub page >](https://github.com/migracode-barcelona)
+[Página GitHub de MigraCode >](https://github.com/migracode-barcelona)
 
-If Git is not installed, follow this tutorial from GitHub to [setup Git](https://docs.github.com/en/github/getting-started-with-github/set-up-git#setting-up-git)
+Si Git no está instalado, sigue este tutorial de GitHub para [configurar Git](https://docs.github.com/en/github/getting-started-with-github/set-up-git#setting-up-git)
 
-Once Git is installed, set your username and email address: `git config --global user.name <name>` and `git config --global user.email <email>`. Example:
+Una vez instalado Git, configura tu nombre de usuario y dirección de correo electrónico: `git config --global user.name <nombre>` y `git config --global user.email <email>`. Ejemplo:
 
 ```
 git config --global user.name "Mona Lisa"
 git config --global user.email email@example.com
 ```
 
-**Git in the Terminal: most used commands**
+**Git en el Terminal: comandos más usados**
 
-* `git init` to be used only _**if it is a new project**_, i.e. a project not **cloned** from a repo or a fork
-* `git add .` to add local files to the **index**
-* `git commit -m "Good explanation of your file changes"` to commit files to the local repo
-* `git remote add origin GitRepoRemoteUrl` to be used only _**if it is a new project**_
-* `git remote -v` to verify that the remote URL is set correctly
-* `git push -u origin master` to push your commits to the remote URL (GitHub in our case)
+* `git init` para ser usado sólo _**si es un proyecto nuevo**_, es decir, un proyecto no **clonado** desde un repositorio o un fork
+* `git add .` para añadir archivos locales al **índice**.
+* `git commit -m "Buena explicación de los cambios en tus archivos"` para enviar archivos al repositorio local
+* `git remote add origin GitRepoRemoteUrl` para ser usado sólo _**si es un proyecto nuevo**_
+* `git remote -v` para verificar que la URL remota está configurada correctamente
+* `git push -u origin master` para enviar tus commits a la URL remota (GitHub en nuestro caso)
 
-The commands `git add .` and `git commit -m "Good explanation of your file changes"` are used to index and save the files in our computer repository, and we will use `git push` to send the changes to GitHub. This is confusing when you read it the first time, so let's draw the flow:
+Los comandos `git add .` y `git commit -m "Good explanation of your file changes"` se utilizan para indexar y guardar los archivos en el repositorio de nuestro ordenador, y utilizaremos `git push` para enviar los cambios a GitHub. Esto es confuso cuando lo lees la primera vez, así que vamos a dibujar el flujo:
 
-![](<.content/image (71).png>)
+![](<.contenido/imagen (71).png>)
 
 ![](<.content/image (206).png>)
 
-### What problem does Git solve?
+### ¿Qué problema resuelve Git?
 
-Git is a version control tool, used to keep the history of changes, and make collaboration easier. It's used to solve many problems, but today we're going to focus on how it:
+Git es una herramienta de control de versiones, utilizada para mantener el historial de cambios, y facilitar la colaboración. Se utiliza para resolver muchos problemas, pero hoy vamos a centrarnos en cómo:
 
-* Helps us to share information.
-* Enables people to make their own changes to that information, and share it back.
-* Allows us to make checkpoints so that we can save our work as we go along.
-* Allows us to track how information has changed between each checkpoint, and go back to older versions of our work if we want to see what we tried before, or to undo changes.
-* Enables us to try more things, because if they didn't work out, we can always go back to what we had working before, by going back to a checkpoint.
+* Nos ayuda a compartir información.
+* Permite a la gente hacer sus propios cambios en esa información, y compartirla de nuevo.
+* Nos permite hacer puntos de control para que podamos guardar nuestro trabajo a medida que avanzamos.
+* Nos permite hacer un seguimiento de cómo ha cambiado la información entre cada punto de control, y volver a versiones anteriores de nuestro trabajo si queremos ver lo que intentamos antes, o deshacer cambios.
+* Nos permite probar más cosas, porque si no funcionan, siempre podemos volver a lo que teníamos funcionando antes, volviendo a un punto de control.
 
 #### Versioning <a href="#versioning" id="versioning"></a>
 
-We use Git to track different versions of files.
+Usamos Git para hacer un seguimiento de las diferentes versiones de los archivos.
 
-Perhaps you've had this experience before...
+Tal vez hayas tenido esta experiencia antes...
 
-![](<.content/image (156).png>)
+![](<.contenido/imagen (156).png>)
 
-You've probably in the past saved a document in a file with "draft" in its name, and then another with "version 1" in its name, and eventually one called "final", and then "really final", and then "final after feedback". It can be hard to know what the latest one is, and to track what order the files came in. But we keep these files around, because they were useful, and we may want to check something from them.
+Es probable que en el pasado hayas guardado un documento en un archivo con el nombre "borrador", y luego otro con el nombre "versión 1", y finalmente uno llamado "final", y luego "realmente final", y luego "final tras comentarios". Puede ser difícil saber cuál es la última y seguir el orden de los archivos. Pero conservamos estos archivos porque son útiles y puede que queramos comprobar algo de ellos.
 
-Git helps us to avoid this problem. Before we see how Git helps, let's try an exercise:
+Git nos ayuda a evitar este problema. Antes de ver cómo nos ayuda Git, hagamos un ejercicio:
 
-#### Exercise 1 (10 minutes) <a href="#exercise-1-10-minutes" id="exercise-1-10-minutes"></a>
+#### Ejercicio 1 (10 minutos) <a href="#ejercicio-1-10-minutos" id="ejercicio-1-10-minutos"></a>
 
-Open these three links - they are different stages of a draft blog post about CodeYourFuture:
+Abre estos tres enlaces - son diferentes etapas de un borrador de entrada de blog sobre CodeYourFuture:
 
 * [final](https://codeyourfuture.github.io/git-draft-blog-post-example/final)
-* [revised](https://codeyourfuture.github.io/git-draft-blog-post-example/revised)
+* [revisado](https://codeyourfuture.github.io/git-draft-blog-post-example/revised)
 * [v1](https://codeyourfuture.github.io/git-draft-blog-post-example/v1)
 
-Try to find all of the differences between these three documents. Can you work out which one is the finished one which was meant to go on the website?
+Intenta encontrar todas las diferencias entre estos tres documentos. ¿Puedes averiguar cuál es el documento final que se iba a publicar en el sitio web?
 
-You probably found it hard to see all of the differences (some were really small, like adding or removing a comma!), and non-obvious which is the most complete version!
+Probablemente te resulte difícil ver todas las diferencias (algunas son muy pequeñas, como añadir o quitar una coma) y no sea evidente cuál es la versión más completa.
 
-### How does Git help? <a href="#how-does-git-help" id="how-does-git-help"></a>
+### ¿Cómo ayuda Git? <a href="#cómo-ayuda-git" id="cómo-ayuda-git"></a>
 
-Imagine your teacher wanted everyone in the class to answer three questions and to send back the answers. What capabilities would we need in order to be able to do that?
+Imagina que tu profesor quiere que todos los alumnos de la clase respondan a tres preguntas y envíen las respuestas. ¿Qué capacidades necesitaríamos para poder hacer eso?
 
-**First**, the teacher needs to be able to write the questions, and **store** them somewhere.
+**Primero**, el profesor necesita ser capaz de escribir las preguntas, y **almacenarlas** en algún lugar.
 
-When we're using Git, we write things down in files in a folder (these could be text files, Word documents, images, or really any kind of file). When we save these files, we say we're _committing_ them, and we call the folder where we're saving them a _repository_ (or _repo_ for short).
+Cuando usamos Git, escribimos cosas en archivos dentro de una carpeta (pueden ser archivos de texto, documentos de Word, imágenes o cualquier tipo de archivo). Cuando guardamos estos archivos, decimos que los estamos _comprometiendo_, y llamamos a la carpeta donde los estamos guardando un _repositorio_ (o _repo_ para abreviar).
 
-![](<.content/image (138).png>)
+![](<.contenido/imagen (138).png>)
 
-**Next**, the teacher needs to put the repository somewhere where the learners can get it. We call this _pushing_ the repository. The teacher won't send a copy to each learner, but will put one copy somewhere on the Internet, and tell the learners where it is. The place the teachers on this course will be pushing to is a website called [GitHub](https://github.com/), but there are other websites they could push to if they wanted to. This is the difference between Git and GitHub - Git is a way of storing and sharing files, and GitHub is one website where you can use Git.
+**A continuación**, el profesor debe colocar el repositorio en algún lugar donde los alumnos puedan acceder a él. A esto lo llamamos _pulsar_ el repositorio. El profesor no enviará una copia a cada alumno, sino que pondrá una copia en algún lugar de Internet, y les dirá a los alumnos dónde está. El lugar en el que los profesores de este curso harán el push es un sitio web llamado [GitHub](https://github.com/), pero hay otros sitios web a los que podrían hacer el push si quisieran. Esta es la diferencia entre Git y GitHub - Git es una forma de almacenar y compartir archivos, y GitHub es un sitio web donde se puede utilizar Git.
 
 ![](<.content/image (87).png>)
 
-**Then**, now that the teacher has pushed the questions, each learner needs to be able to **get the questions onto their computer**.
+**Entonces**, ahora que el profesor ha empujado las preguntas, cada alumno necesita ser capaz de **obtener las preguntas en su ordenador**.
 
-When we're using Git, we call this _cloning_ the teacher's repository (because we're making our own copy). After we've cloned the repository, we will have the same folder on our computer as the teacher created, committed, and pushed.
+Cuando usamos Git, llamamos a esto _clonar_ el repositorio del profesor (porque estamos haciendo nuestra propia copia). Después de clonar el repositorio, tendremos en nuestro ordenador la misma carpeta que el profesor creó, confirmó y envió.
 
 ![](<.content/image (4).png>)
 
 ### The Git Cheatsheet <a href="#the-git-cheatsheet" id="the-git-cheatsheet"></a>
 
-We tend to do the same four or five things in Git over and over again, but it can be easy to forget them. There's a handy reference at [Git Guide](https://syllabus.migracode.org/git) and [Git CheatSheet](https://education.github.com/git-cheat-sheet-education.pdf) to help you remember.
+Tendemos a hacer las mismas cuatro o cinco cosas en Git una y otra vez, pero puede ser fácil olvidarlas. Hay una referencia práctica en [Git Guide](https://syllabus.migracode.org/git) y [Git CheatSheet](https://education.github.com/git-cheat-sheet-education.pdf) para ayudarte a recordar.
 
-Let's walk through one of the sections together: "I want to get code from a repo onto my computer (Cloning)". It has a video, to show us what we should be doing, and explains each step in the text.
+Repasemos juntos una de las secciones: "Quiero pasar código de un repositorio a mi ordenador (Clonación)". Tiene un video, para mostrarnos lo que debemos hacer, y explica cada paso en el texto.
 
-We'll use it in our next exercise:
+Lo usaremos en nuestro próximo ejercicio:
 
-#### Exercise 2 (15 minutes) <a href="#exercise-2-15-minutes" id="exercise-2-15-minutes"></a>
+#### Ejercicio 2 (15 minutos) <a href="#ejercicio-2-15-minutos" id="ejercicio-2-15-minutos"></a>
 
-Volunteers from Code Your Future have already pushed an example repository, so you're going to try to clone it from GitHub onto your computer.
+Los voluntarios de Code Your Future ya han empujado un repositorio de ejemplo, así que vas a intentar clonarlo desde GitHub a tu ordenador.
 
-Try following the instructions labelled "I want to get code from a repo onto my computer (Cloning)" from the [Git Cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf). The repository we want to clone is `https://github.com/CodeYourFuture/cyf-demo-repo`.
+Intenta seguir las instrucciones etiquetadas como "Quiero obtener código de un repositorio en mi ordenador (Clonación)" de la [Git Cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf). El repositorio que queremos clonar es `https://github.com/CodeYourFuture/cyf-demo-repo`.
 
-When you've finished the exercise, you should have `file.txt` open in VS Code.
+Cuando hayas terminado el ejercicio, deberías tener `file.txt` abierto en VS Code.
 
-### What did we just do? <a href="#what-did-we-just-do" id="what-did-we-just-do"></a>
+### ¿Qué acabamos de hacer? <a href="#qué-acabamos-de-hacer" id="qué-acabamos-de-hacer"></a>
 
 ![](<.content/image (24).png>)
 
-Each of you just cloned a repository which CodeYourFuture created onto your computer, and opened up your copy of one of the files. This is the process you're going to follow to get your homework every week.
+Cada uno de ustedes acaba de clonar un repositorio que CodeYourFuture creó en su ordenador, y abrió su copia de uno de los archivos. Este es el proceso que vais a seguir para conseguir vuestros deberes cada semana.
 
-### Let's do some homework (teacher-led demo) <a href="#lets-do-some-homework-teacher-led-demo" id="lets-do-some-homework-teacher-led-demo"></a>
+### Hagamos algunos deberes (demo guiada por el profesor) <a href="#lets-do-some-homework-teacher-led-demo" id="lets-do-some-homework-teacher-led-demo"></a>
 
-The file you opened, `file.txt`, has a question in it. We're going to answer the question, and submit it as if it was our homework.
+El archivo que has abierto, `file.txt`, contiene una pregunta. Vamos a responder a la pregunta, y a enviarla como si fueran nuestros deberes.
 
-Let's clone our repository to our computer:
+Vamos a clonar nuestro repositorio en nuestro ordenador:
 
 ```
 https://github.com/CodeYourFuture/cyf-demo-repo
 ```
 
-We can edit the file in VS Code to answer the question, and save it like normal.
+Podemos editar el archivo en VS Code para responder a la pregunta, y guardarlo como de costumbre.
 
-After we've saved the file, if we open up GitHub Desktop, something interesting has changed. On the left, it now says "1 changed file", and on the right, it shows us what the change was. Things we've removed get a red background, and things we've added get a green background.
+Después de guardar el archivo, si abrimos GitHub Desktop, algo interesante ha cambiado. A la izquierda, ahora dice "1 archivo cambiado", y a la derecha, nos muestra cuál ha sido el cambio. Las cosas que hemos eliminado tienen un fondo rojo, y las cosas que hemos añadido tienen un fondo verde.
 
-(If you've changed a line, the old version will appear with a red background, and the new version with a green background).
+(Si has cambiado una línea, la versión antigua aparecerá con fondo rojo, y la nueva versión con fondo verde).
 
-![](<.content/image (131).png>)
+![](<.contenido/imagen (131).png>)
 
-This is a really useful way for us to check over our homework before submitting it. If we've accidentally deleted things, or changed things we didn't mean to, we can notice now, and undo them by editing the file again.
+Esta es una forma muy útil de revisar nuestros deberes antes de entregarlos. Si hemos borrado cosas accidentalmente, o cambiado cosas que no queríamos, podemos darnos cuenta ahora, y deshacerlas editando el archivo de nuevo.
 
-When we're happy with our change, we can press the "Commit to main" button. That tells Git "This change is an interesting change, I want to keep it". You don't need to wait until you've got your answers perfect before committing, in fact it's better to make lots of commits as you work - we'll come back to this in a bit!
+Cuando estemos contentos con nuestro cambio, podemos pulsar el botón "Commit to main". Eso le dice a Git "Este cambio es un cambio interesante, quiero mantenerlo". No necesitas esperar hasta que tengas tus respuestas perfectas antes de confirmar, de hecho es mejor hacer muchas confirmaciones a medida que trabajas - ¡volveremos a esto en un momento!
 
-This doesn't copy our change to any other computer - it won't go on GitHub - committing is something we just do on our computer.
+Esto no copia nuestro cambio a ningún otro ordenador - no irá a GitHub - confirmar es algo que sólo hacemos en nuestro ordenador.
 
-#### Exercise 3 (10 minutes) <a href="#exercise-3-10-minutes" id="exercise-3-10-minutes"></a>
+#### Ejercicio 3 (10 minutos) <a href="#ejercicio-3-10-minutos" id="ejercicio-3-10-minutos"></a>
 
-Try doing what your teacher just did:
+Intenta hacer lo que acaba de hacer tu profesor:
 
-1. Answer the question in `file.txt` in VS Code and save your changes.
-2. Look at the diff in GitHub desktop - does it look as you expect?
-3. Make a commit in your local repository.
+1. Responde a la pregunta en `file.txt` en VS Code y guarda los cambios.
+2. Mira el diff en el escritorio de GitHub - ¿se ve como esperabas?
+3. 3. Haz un commit en tu repositorio local.
 
-#### Teacher-led demo continues... <a href="#teacher-led-demo-continues" id="teacher-led-demo-continues"></a>
+#### La demo guiada por el profesor continúa... <a href="#teacher-led-demo-continues" id="teacher-led-demo-continues"></a>
 
-Now, because we committed a change, our copy of the repository is different from CodeYourFuture's copy. GitHub Desktop now gives us a new button: "Push origin" ("origin" is what Git calls "where I cloned this repository from"). If we press it, it will try to send our change to the CodeYourFuture version.
+Ahora, debido a que hemos confirmado un cambio, nuestra copia del repositorio es diferente de la copia de CodeYourFuture. GitHub Desktop nos da ahora un nuevo botón: "Empujar origen" ("origen" es como Git llama a "desde dónde he clonado este repositorio"). Si lo pulsamos, intentará enviar nuestro cambio a la versión de CodeYourFuture.
 
-We didn't have this button before, because even though we had changed the files, we hadn't committed any changes. There's an important distinction here: When we save files in VS Code, we store them in the file on our computer, but Git doesn't automatically commit them. It notices the changes (it showed them to us!), and asks us if we want to commit them. Only after we've committed them does it let us push them. We'll talk about when you want to commit later on today.
+Antes no teníamos este botón, porque aunque habíamos cambiado los archivos, no habíamos confirmado ningún cambio. Hay una distinción importante aquí: Cuando guardamos archivos en VS Code, los almacenamos en el archivo de nuestro ordenador, pero Git no los confirma automáticamente. Se da cuenta de los cambios (¡nos los ha mostrado!), y nos pregunta si queremos confirmarlos. Sólo después de que los hayamos confirmado nos permite enviarlos. Hablaremos de cuándo quieres confirmar más adelante.
 
-So, we're happy with our homework, we've committed it, let's try pushing it!
+Así que, estamos contentos con nuestra tarea, la hemos confirmado, ¡intentemos empujarla!
 
 ### Forking <a href="#forking" id="forking"></a>
 
-GitHub Desktop just gave us a really useful warning, but it uses some words we haven't seen yet!
+GitHub Desktop acaba de darnos una advertencia realmente útil, ¡pero utiliza algunas palabras que aún no hemos visto!
 
-We just tried to push our changes to CodeYourFuture's copy of this repository. But we're not allowed to do that! Imagine if anyone could just push anything they wanted to our repository! Someone could accidentally delete all of the questions, or add the answers to all of the questions, or turn the HTML homework into a bunch of questions about vegetables!
+Acabamos de intentar enviar nuestros cambios a la copia de CodeYourFuture de este repositorio. ¡Pero no se nos permite hacer eso! ¡Imagina que cualquiera pudiera subir lo que quisiera a nuestro repositorio! Alguien podría borrar accidentalmente todas las preguntas, o añadir las respuestas a todas las preguntas, ¡o convertir los deberes de HTML en un montón de preguntas sobre verduras!
 
-To avoid this, we use something called a _fork_ and something called a _pull request_.
+Para evitar esto, usamos algo llamado _fork_ y algo llamado _pull request_.
 
-Remember when we cloned the repo, we pasted `https://github.com/CodeYourFuture/cyf-demo-repo` in as the place to clone from? Let's look at that:
+¿Recuerdas que cuando clonamos el repositorio, pegamos `https://github.com/CodeYourFuture/cyf-demo-repo` como el lugar desde el que clonar? Echemos un vistazo a eso:
 
 ![](<.content/image (126).png>)
 
-This is saying "On GitHub, the user `CodeYourFuture` has a repository called `cyf-demo-repo`, I want that".
+Esto está diciendo "En GitHub, el usuario `CodeYourFuture` tiene un repositorio llamado `cyf-demo-repo`, quiero eso".
 
-GitHub lets you host your own copy of the repository on GitHub too! If your username is `EagerLearner`, can you guess what URL your repository would be at?
+GitHub también te permite alojar tu propia copia del repositorio en GitHub. Si tu nombre de usuario es `EagerLearner`, ¿puedes adivinar en qué URL estaría tu repositorio?
 
-That's right, https://github.com/EagerLearner/cyf-demo-repo!
+Así es, ¡https://github.com/EagerLearner/cyf-demo-repo!
 
 ![](<.content/image (50).png>)
 
-This is called a _fork_. It's a copy of the repository, where you're allowed to make changes. So when GitHub Desktop just asked us "Do you want to fork this repository?", what it's really saying is "You're not allowed to make changes to CodeYourFuture's repository, would you like to make your own copy on GitHub where you _are_ allowed to make changes, and put your changes there?"
+Esto se llama un _fork_. Es una copia del repositorio, donde se te permite hacer cambios. Así que cuando GitHub Desktop nos acaba de preguntar "¿Quieres hacer un fork de este repositorio?", lo que realmente está diciendo es "No tienes permiso para hacer cambios en el repositorio de CodeYourFuture, ¿te gustaría hacer tu propia copia en GitHub donde _tienes_ permiso para hacer cambios, y poner tus cambios ahí?".
 
-That sounds like exactly what we want to do, so we'll click the "Fork This Repository" button.
+Eso suena exactamente a lo que queremos hacer, así que haremos clic en el botón "Fork This Repository".
 
-Then GitHub asks us whether we want to fork "To contribute to the parent project" (i.e. because we want to work with CodeYourFuture) or "For my own purposes" (i.e. because we want to do our own thing apart from CodeYourFuture). We want to work with CodeYourFuture, so we'll select "To contribute to the parent project" and press Continue.
+Entonces GitHub nos pregunta si queremos hacer un fork "Para contribuir al proyecto padre" (es decir, porque queremos trabajar con CodeYourFuture) o "Para mis propios fines" (es decir, porque queremos hacer nuestras propias cosas aparte de CodeYourFuture). Nosotros queremos trabajar con CodeYourFuture, así que seleccionaremos "Para contribuir al proyecto padre" y pulsaremos Continuar.
 
-Now if we press "Push origin", it will copy our changes to our fork on GitHub.
+Ahora si pulsamos "Push origin", copiará nuestros cambios a nuestro fork en GitHub.
 
 ![](<.content/image (60).png>)
 
-If you forget this, it's in the [cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf)! Check out the "I want to send my code to volunteers (Pushing)" section.
+Si te olvidas de esto, ¡está en la [cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf)! Echa un vistazo a la sección "Quiero enviar mi código a voluntarios (Pushing)".
 
-### Making a Pull Request <a href="#making-a-pull-request" id="making-a-pull-request"></a>
+### Hacer un Pull Request <a href="#making-a-pull-request" id="making-a-pull-request"></a>
 
-Now that we've pushed our homework to our fork, we need to tell CodeYourFuture about it, so that the volunteers know to look at it!
+Ahora que hemos empujado nuestra tarea a nuestro fork, ¡necesitamos informar a CodeYourFuture sobre ella, para que los voluntarios sepan que tienen que echarle un vistazo!
 
-We do this with something called a _pull request_. This is a slightly weird name, in the context of homework.
+Hacemos esto con algo llamado _pull request_. Es un nombre un poco raro en el contexto de los deberes.
 
-Normally, when people push changes to a fork on GitHub, they're doing so because they want the person who owns the repository to look at the changes, and pull the changes into their repository. For example, this webpage we're reading the syllabus on right now is hosted on GitHub, and if someone spots a typo, they can fix it, push it to their fork, and request for CodeYourFuture to pull their change into CodeYourFuture's version (hence the name a pull request - "requesting to pull in changes").
+Normalmente, cuando la gente introduce cambios en una bifurcación de GitHub, lo hace porque quiere que la persona propietaria del repositorio vea los cambios y los incorpore a su repositorio. Por ejemplo, esta página web en la que estamos leyendo el temario ahora mismo está alojada en GitHub, y si alguien detecta un error tipográfico, puede corregirlo, subirlo a su fork y solicitar a CodeYourFuture que incorpore su cambio a la versión de CodeYourFuture (de ahí el nombre pull request, "solicitud de incorporación de cambios").
 
-We call pulling someone's change into a repository "merging" the change, because we're merging what we're pulling into our repo with what we had before.
+Llamamos "fusionar" el cambio de alguien en un repositorio, porque estamos fusionando lo que estamos introduciendo en nuestro repositorio con lo que teníamos antes.
 
-For submitting homework, every week you're going to create a pull request, and a volunteer will look at it and give you feedback, but we won't be pulling your homework into CodeYourFuture's copy (then the next student would have the answers when they tried to read the questions!). You'll be creating pull requests, but we won't actually merge your changes into the repository.
+Para enviar los deberes, cada semana vas a crear un pull request, y un voluntario lo mirará y te dará su opinión, pero no vamos a incluir tus deberes en la copia de CodeYourFuture (¡entonces el siguiente estudiante tendría las respuestas cuando intentara leer las preguntas!). Crearás pull requests, pero no incorporaremos tus cambios al repositorio.
 
-In GitHub Desktop, if you open the Branch menu, and click "Create Pull Request", it will open your web browser at GitHub, and show you the changes you're about to make a pull request for. This is another great time to check that you're happy with your homework (if you're not, go back to VS Code, make your changes, commit them, push them to origin again, and refresh this page).
+En GitHub Desktop, si abres el menú Branch, y haces clic en "Create Pull Request", se abrirá tu navegador web en GitHub, y te mostrará los cambios para los que estás a punto de hacer un pull request. Este es otro buen momento para comprobar que estás contento con tu tarea (si no lo estás, vuelve a VS Code, haz tus cambios, confírmalos, envíalos a origen de nuevo, y actualiza esta página).
 
-If you're happy, press the "Create pull request" button. Fill in the details in the form, so that the volunteers know what they're meant to be reviewing, and press "Create pull request".
+Si estás satisfecho, pulsa el botón "Create pull request". Rellena los detalles del formulario, para que los voluntarios sepan lo que van a revisar, y pulsa "Crear pull request".
 
-Now there's a pull request that volunteers can look at! They can see who made the pull request, and see all the changes you've made.
+Ahora ya hay una solicitud de extracción que los voluntarios pueden consultar. Pueden ver quién hizo el pull request, y ver todos los cambios que has hecho.
 
-#### Exercise 4 (15 minutes) <a href="#exercise-4-15-minutes" id="exercise-4-15-minutes"></a>
+#### Ejercicio 4 (15 minutos) <a href="#ejercicio-4-15-minutos" id="ejercicio-4-15-minutos"></a>
 
-Make yourself a pull request with your change!
+¡Haz tú mismo un pull request con tu cambio!
 
-1. Try to push your changes, make a fork, and then actually push your changes.
-2. Make your first pull request!
+1. Intenta empujar tus cambios, haz un fork y luego empuja realmente tus cambios.
+2. Haz tu primer pull request.
 
-If you get stuck, check out the [cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf) :)
+Si te quedas atascado, echa un vistazo a la [cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf) :)
 
-#### Exercise 5 (5 minutes) <a href="#exercise-5-5-minutes" id="exercise-5-5-minutes"></a>
+#### Ejercicio 5 (5 minutos) <a href="#ejercicio-5-5-minutos" id="ejercicio-5-5-minutos"></a>
 
-There's another file in the repository you've cloned, `other-file.txt`.
+Hay otro fichero en el repositorio que has clonado, `otro-archivo.txt`.
 
-1. Open it
-2. Answer the question in the file
-3. Commit
-4. and Push
+1. Ábrelo
+2. Responde a la pregunta que aparece en el archivo
+3. Confirme
+4. y Empujar
 
-Notice a couple of things are different this time!
+Observa que un par de cosas son diferentes esta vez.
 
-It didn't ask you to fork the repository - that's because you already have a fork you're allowed to push to.
+No le pide que haga un fork del repositorio - eso es porque ya tiene un fork al que puede hacer push.
 
-You may also notice that if you click the "Create Pull Request" menu item, it brings you to a different page. It doesn't have a "Create Pull Request" button, it has a "View Pull Request" button. This is because if you already have a pull request open, when you push more changes, it will update your existing pull request.
+También puede notar que si hace clic en el elemento de menú "Crear Pull Request", le lleva a una página diferente. No tiene un botón "Crear Pull Request", tiene un botón "Ver Pull Request". Esto se debe a que si ya tiene una solicitud de extracción abierta, cuando introduzca más cambios, se actualizará su solicitud de extracción existente.
 
-This is useful for responding to feedback you get on your homework. There are ways to open more than one pull request at a time (using something called branches), which we'll learn about in the future, but for now, one should do!
+Esto es útil para responder a la retroalimentación que recibe en su tarea. Hay formas de abrir más de una pull request a la vez (usando algo llamado ramas), sobre las que aprenderemos en el futuro, pero por ahora, ¡una debería bastar!
 
 ### Getting feedback <a href="#getting-feedback" id="getting-feedback"></a>
 
-When you've made your pull request, our volunteers will be notified. They will look at your changes. When they are done, you will get an email. Here are some of the things they may do:
+Cuando hayas hecho tu pull request, nuestros voluntarios serán notificados. Ellos revisarán tus cambios. Cuando hayan terminado, recibirás un correo electrónico. Estas son algunas de las cosas que pueden hacer:
 
-* Make comments with suggestions, either about a particular bit of code, or about the whole pull request.
-* Add labels to the pull request (e.g. marking it as complete, or unfinished).
+* Hacer comentarios con sugerencias, ya sea sobre un fragmento de código en particular, o sobre todo el pull request.
+* Añadir etiquetas al pull request (por ejemplo, marcarlo como completo o inacabado).
 
-If they give you suggestions, you should try to implement the suggestions, and push a new commit. If you're confused, struggling, or find them unclear, you can respond to the comment with a comment of your own, or ask on Slack.
+Si te dan sugerencias, deberías intentar implementarlas y enviar un nuevo commit. Si estás confundido, luchando, o los encuentras poco claros, puedes responder al comentario con un comentario propio, o preguntar en Slack.
 
-### History <a href="#history" id="history"></a>
+### Historia <a href="#historia" id="historia"></a>
 
-One useful features of Git is how it stores your commits. In GitHub Desktop, if you open the History tab, you can see a list of each commit that's been made in the repository, with the oldest at the bottom and the newest at the top.
+Una característica útil de Git es cómo almacena tus commits. En GitHub Desktop, si abres la pestaña Historial, puedes ver una lista de cada commit que se ha hecho en el repositorio, con el más antiguo en la parte inferior y el más reciente en la parte superior.
 
-If you click on one of the commits, you'll see the changes that happened in it. This can be really useful to understand how the repository evolved to how it looks today. It can also help us to find out when bugs were introduced!
+Si haces clic en uno de los commits, verás los cambios que se han producido en él. Esto puede ser realmente útil para entender cómo evolucionó el repositorio hasta su aspecto actual. También puede ayudarnos a averiguar cuándo se introdujeron los errores.
 
-You can always see an old version of a file by looking in the Git history, and if you want to get it back, you can just copy and paste it from the history view into your text editor.
+Siempre puedes ver una versión antigua de un archivo mirando en el historial de Git, y si quieres recuperarla, sólo tienes que copiarla y pegarla desde la vista del historial en tu editor de texto.
 
-#### When to commit, push, and make a pull request <a href="#when-to-commit-push-and-make-a-pull-request" id="when-to-commit-push-and-make-a-pull-request"></a>
+#### Cuándo hacer commit, push y pull request <a href="#when-to-commit-push-and-make-a-pull-request" id="when-to-commit-push-and-make-a-pull-request"></a>.
 
-You should commit often! Every time you think you've done something you may want to look at again, you should make a commit.
+Debes comprometerte a menudo Cada vez que creas que has hecho algo que quieras volver a mirar, deberías hacer un commit.
 
-Let's say you've made a website, and it generally looks about right, but you were thinking of adding some colour, or an animation. Before you do that, make a commit, because then if you break some of the CSS by trying to add an animation, you can always undo it.
+Digamos que has hecho un sitio web, y en general se ve bien, pero estabas pensando en añadir un poco de color, o una animación. Antes de hacerlo, haz un commit, porque si rompes algo del CSS intentando añadir una animación, siempre puedes deshacerlo.
 
-Or if you want to try out a few different colours, make a commit for each colour, and then you can easily see what colours you tried out, and compare them.
+O si quieres probar varios colores diferentes, haz un commit para cada color, y así podrás ver fácilmente qué colores has probado y compararlos.
 
-**Teacher-led demo: Changing the colours**
+**Demostración guiada por el profesor: Cambiar los colores**
 
-A volunteer made a small website, which we can find in [https://github.com/CodeYourFuture/SampleGitWebsite](https://github.com/CodeYourFuture/SampleGitWebsite)
+Un voluntario hizo un pequeño sitio web, que podemos encontrar en [https://github.com/CodeYourFuture/SampleGitWebsite](https://github.com/CodeYourFuture/SampleGitWebsite)
 
-They had a few different colour combinations they were trying to choose between. Because they made commits for each choice, we can look at their choices, and try them each out.
+Tenían varias combinaciones de colores diferentes entre las que intentaban elegir. Como hicieron commits para cada opción, podemos ver sus elecciones y probarlas.
 
-If they hadn't made all of those commits, they probably would've forgotten at least one of the colours, and we wouldn't be able to see them now. Maybe they would've lost the perfect colour! Thankfully, we can look in the git history and see each step along the way.
+Si no hubieran hecho todos esos commits, probablemente habrían olvidado al menos uno de los colores y ahora no podríamos verlos. Quizá habrían perdido el color perfecto. Afortunadamente, podemos mirar en el historial de git y ver cada paso a lo largo del camino.
 
-Similarly, you don't need to have finished everything before you push - in fact, it can be better to push lots! If your computer crashes, or you accidentally delete your files, or you want to work on homework on someone else's computer, you can always get back anything that you've pushed to GitHub. So commit often, and push often!
+Del mismo modo, no es necesario que hayas terminado todo antes de hacer push; de hecho, ¡puede ser mejor hacer muchos push! Si tu ordenador se estropea, o borras accidentalmente tus archivos, o quieres hacer los deberes en el ordenador de otra persona, siempre puedes recuperar todo lo que hayas enviado a GitHub. Así que haz commits a menudo, ¡y push a menudo!
 
-You also don't need to have finished all of your homework in order to make a pull request! If you've been struggling with one question, you can make a pull request and ask for help (you can even link to it on Slack! It will help the volunteers to help you, because they will be able to see exactly the code you're struggling with). Or if you've done most of the homework, but are struggling with a few questions, a volunteer can look at what you've done and help you out - but only if they can see your code!
+Tampoco necesitas haber terminado todos tus deberes para hacer un pull request. Si has estado luchando con una pregunta, puedes hacer un pull request y pedir ayuda (¡incluso puedes enlazarlo en Slack! Ayudará a los voluntarios a ayudarte, porque podrán ver exactamente el código con el que estás teniendo problemas). O si has hecho la mayor parte de la tarea, pero tienes problemas con algunas preguntas, un voluntario puede ver lo que has hecho y ayudarte, ¡pero sólo si puede ver tu código!
 
-Commit often, push often, and make pull requests early!
+Haz commit a menudo, push a menudo y haz pull requests pronto.
 
-You may notice that your commits all have messages like "Update file.txt", whereas the ones before you started editing have different messages.
+Puede que notes que todos tus commits tienen mensajes como "Actualizar archivo.txt", mientras que los anteriores a que empezaras a editar tenían mensajes diferentes.
 
-Commit messages can be really useful to understand what a change did without having to read the whole thing. Let's try out an exercise to help us understand this:
+Los mensajes de confirmación pueden ser muy útiles para entender lo que hizo un cambio sin tener que leerlo todo. Intentemos un ejercicio para ayudarnos a entender esto:
 
-#### Exercise 6 (10 minutes) <a href="#exercise-6-10-minutes" id="exercise-6-10-minutes"></a>
+#### Ejercicio 6 (10 minutos) <a href="#ejercicio-6-10-minutos" id="ejercicio-6-10-minutos"></a>
 
-1. Clone [https://github.com/CodeYourFuture/git-log-example](https://github.com/CodeYourFuture/git-log-example) (if you forgot how, check the [cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf)
-2. Have a read of the file called `README.md`. See if you can find a problem in the file.
-3. Look through the history in GitHub Desktop. See if you can work out when and why the problem was introduced.
-4. Make a pull request fixing the problem.
+1. Clona [https://github.com/CodeYourFuture/git-log-example](https://github.com/CodeYourFuture/git-log-example) (si has olvidado cómo, consulta la [cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf)
+2. Lee el archivo `README.md`. Mira a ver si encuentras algún problema en el archivo.
+3. 3. Revisa el historial en GitHub Desktop. A ver si puedes averiguar cuándo y por qué se introdujo el problema.
+4. 4. Haz un pull request para solucionar el problema.
 
-#### Exercise 7 (5 minutes) <a href="#exercise-7-5-minutes" id="exercise-7-5-minutes"></a>
+#### Ejercicio 7 (5 minutos) <a href="#ejercicio-7-5-minutos" id="ejercicio-7-5-minutos"></a>
 
-Remember earlier we looked at three blog posts? They're actually in a repository on GitHub! [https://github.com/CodeYourFuture/git-draft-blog-post-example](https://github.com/CodeYourFuture/git-draft-blog-post-example)
+¿Recuerdas que antes vimos tres entradas de blog? ¡En realidad están en un repositorio en GitHub! [https://github.com/CodeYourFuture/git-draft-blog-post-example](https://github.com/CodeYourFuture/git-draft-blog-post-example)
 
-Clone the repository and take a look. Can you find all of the differences between them now? Can you tell which was the finished version? How much easier/harder is this than it was without Git?
+Clona el repositorio y echa un vistazo. ¿Puedes encontrar ahora todas las diferencias entre ellos? ¿Puedes decir cuál era la versión final? ¿Cuánto más fácil/difícil es esto que sin Git?
 
-### Commit messages <a href="#commit-messages" id="commit-messages"></a>
+### Mensajes de confirmación <a href="#commit-messages" id="commit-messages"></a>
 
-If you looked through the history of the Git repository, you may have been able to see where the problem came in just from the commit message, without having to look at the changes that were actually made. If the commit messages were all just "Update file.txt", that would've been much harder!
+Si miras a través del historial del repositorio Git, puede que hayas sido capaz de ver dónde estaba el problema sólo por el mensaje de confirmación, sin tener que mirar los cambios que se hicieron realmente. Si los mensajes de confirmación fueran simplemente "Actualizar archivo.txt", ¡habría sido mucho más difícil!
 
-When we make commits in Git, we try to give clear, helpful messages, describing what changed, and why. (The why is really important! You can always work out _what_ changed by reading the change itself, but it's much harder to work out _why_ if no one wrote it down!)
+Cuando hacemos confirmaciones en Git, intentamos dar mensajes claros y útiles, describiendo qué ha cambiado y por qué. (¡El por qué es realmente importante! Siempre puedes averiguar _qué_ ha cambiado leyendo el cambio en sí, pero es mucho más difícil averiguar _por qué_ si nadie lo ha escrito).
 
-There is a convention when using Git to use the following format for commit messages:
+Hay una convención en el uso de Git para utilizar el siguiente formato para los mensajes de confirmación:
 
 ```
-One sentence summary
+Resumen de una frase
 
-Longer explanation of how, the reasons, exceptions, or anything that may be surprising.
-This may be many sentences, and keep going for a long time.
+Explicación más larga del cómo, las razones, excepciones, o cualquier cosa que pueda sorprender.
+Puede constar de muchas frases y prolongarse durante mucho tiempo.
 ```
 
-Try to use this format when making your own commits. GitHub Desktop tries to encourage this by having two boxes above the "Commit to main" button - one which is just one line, and one where you can put lots of lines.
+Intenta utilizar este formato cuando hagas tus propios commits. GitHub Desktop intenta fomentar esto teniendo dos cajas encima del botón "Commit to main" - una que es sólo una línea, y otra donde puedes poner muchas líneas.
 
 ![](<.content/image (82).png>)
 
-Explaining _why_ we're making the change can help people in the future to understand why things look the way they do, and what's important not to change.
+Explicar _por qué_ estamos haciendo el cambio puede ayudar a la gente en el futuro a entender por qué las cosas se ven como se ven, y lo que es importante no cambiar.
 
-### Glossary <a href="#glossary" id="glossary"></a>
+### Glosario <a href="#glosario" id="glosario"></a>
 
-We introduced a few new things in this class, and it can be a bit confusing to know which is which:
+Hemos introducido algunas cosas nuevas en esta clase, y puede ser un poco confuso saber cuál es cuál:
 
-* **Git** is a system for storing changes to files in commits, and sharing them between different computers. There are also other systems which do this, but Git is the most popular one.
-* **GitHub** is a website which will store a copy of your Git repository, and allow you to clone it, and push changes to it. There are also other websites which can do this, but GitHub is the most popular one.
-* **GitHub Desktop** is a program made by GitHub to allow you to use Git easily from your computer. Later in the course, we will use other programs to use Git, too.
+* **Git** es un sistema para almacenar cambios en archivos en commits, y compartirlos entre diferentes ordenadores. También hay otros sistemas que hacen esto, pero Git es el más popular.
+* GitHub** es un sitio web que almacena una copia de tu repositorio Git y te permite clonarlo y enviarle cambios. También hay otros sitios web que pueden hacer esto, pero GitHub es el más popular.
+* **GitHub Desktop** es un programa hecho por GitHub para permitirte usar Git fácilmente desde tu ordenador. Más adelante en el curso, también utilizaremos otros programas para usar Git.
 
 
 
-### **More Resources**
+### **Más Recursos**
 
-* [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
-* [How does GitHub work? (30min)](https://www.youtube.com/watch?v=E8TXME3bzNs)
-* Follow this tutorial to learn the basic Git commands [https://www.codeschool.com/courses/try-git](https://www.codeschool.com/courses/try-git)
-* Another good resource: Git - the simple guide [http://rogerdudler.github.io/git-guide/](http://rogerdudler.github.io/git-guide/)
-* A more detailed tutorial that goes into advanced topics of Git - [https://www.atlassian.com/git/tutorials/what-is-version-control](https://www.atlassian.com/git/tutorials/what-is-version-control)
-* You can also check this visual explanation of different commands and what they do: [http://ndpsoftware.com/git-cheatsheet.html#loc=workspace](http://ndpsoftware.com/git-cheatsheet.html#loc=workspace)
-* This Glossary has definitions of the terms normally used with Git: [https://help.github.com/articles/github-glossary/](https://help.github.com/articles/github-glossary/)
+* Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
+* [¿Cómo funciona GitHub? (30min)](https://www.youtube.com/watch?v=E8TXME3bzNs)
+* Sigue este tutorial para aprender los comandos básicos de Git [https://www.codeschool.com/courses/try-git](https://www.codeschool.com/courses/try-git)
+* Otro buen recurso: Git - la guía sencilla [http://rogerdudler.github.io/git-guide/](http://rogerdudler.github.io/git-guide/)
+* Un tutorial más detallado que profundiza en temas avanzados de Git - [https://www.atlassian.com/git/tutorials/what-is-version-control](https://www.atlassian.com/git/tutorials/what-is-version-control)
+* También puedes consultar esta explicación visual de los diferentes comandos y lo que hacen: [http://ndpsoftware.com/git-cheatsheet.html#loc=workspace](http://ndpsoftware.com/git-cheatsheet.html#loc=workspace)
+* Este Glosario tiene definiciones de los términos normalmente usados con Git: [https://help.github.com/articles/github-glossary/](https://help.github.com/articles/github-glossary/)
 
 ###
