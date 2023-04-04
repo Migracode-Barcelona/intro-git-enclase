@@ -1,5 +1,5 @@
 # Your second class - Git and Github
-
+**:warning: As you are using GitHub Education and CodeSpaces, some parts of this lesson, like setting up your user configuration, may not be necessary.** 
 ## Learning Objectives
 
 By the end of this class, you should be able to:
@@ -13,8 +13,6 @@ By the end of this class, you should be able to:
   * (To use GitHub's _pull request_ workflows, and _push_ further changes).
 * Explore how a file has changed over time.
   * (To use Git's _history log_).
-
-
 
 ### Get started
 
